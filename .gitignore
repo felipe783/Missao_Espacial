@@ -38,6 +38,8 @@ build/
 ### Mac OS ###
 .DS_Store
 
-### ENV
+# ENV (qualquer lugar do projeto)
 .env
 .env.*
+**/.env
+**/.env.*
