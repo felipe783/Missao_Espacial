@@ -13,6 +13,7 @@ public class Main{
         //Criacao.Mostrar(); //Pra criar os satelites e Foguetes
         System.out.println("=========================");
         System.out.println("1-Mostrar Satelites/Foguete");
+        System.out.println("2-Iniciar Missão");
         System.out.println("=========================");
         System.out.println("O que deseja fazer?");
         int resposta = input.nextInt();

@@ -8,12 +8,12 @@
 - Sistema de migrations com **Flyway**
 
 ### Back End
-- Banco de dados: [**MySQL**](https://www.mysql.com/)
-- Linguagem: [**Java**](https://www.java.com/pt-BR/)
+- Banco de dados: **MySQL**
+- Linguagem: **Java**
 
 ### Front End
-- [**React**](https://react.dev/)
-- [**TypeScript**](https://www.typescriptlang.org/)
+- **React**
+- **TypeScript**
 
 ## Proposta
 Foi proposto um exercício para criar um **Centro de Controle de Missões Espaciais**, contendo um **Back End em Java** e um **Front End** para interação com o sistema.
