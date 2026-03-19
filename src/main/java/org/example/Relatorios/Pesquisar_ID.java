@@ -1,16 +1,14 @@
 package org.example.Relatorios;
 
 import org.example.Data.ConnectionData;
-import java.sql.SQLException;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class Pesquisar_ID {
-    public static void Pesquisar() {
+    public static void Pesquisar(int resposta) {
         Scanner input = new Scanner(System.in);
-        int resposta = Relatorios.Relatorios_Mostrar(); //Ta pegando a respsota que ele deu
-        try {
+        try{
             //Conexão com SQL
             Connection conn = ConnectionData.getConnection();
             String sql = null;
@@ -21,19 +19,19 @@ public class Pesquisar_ID {
 
             switch(resposta){ //Aqui já filtra por ID no final eu apenas mostro o resultado
                 case 1: //Satelite
-                    sql = "SELECT * FROM satelite WHERE ID = ?";
+                    sql = "SELECT * FROM satelite WHERE ID_SATELITE = ?";
                     break;
                 case 2: // Foguete
-                    sql = "SELECT * FROM foguete WHERE ID = ?";
+                    sql = "SELECT * FROM foguete WHERE ID_FOGUETE = ?";
                     break;
                 case 3: //Equipes
-                    sql = "SELECT * FROM equipe WHERE ID = ?";
+                    sql = "SELECT * FROM equipe WHERE ID_EQUIPÉ = ?";
                     break;
                 case 4: // Membros
                     sql = "SELECT * FROM astronautas WHERE ID = ?";
                     break;
                 case 5: // Missao
-                    sql = "SELECT * FROM missao WHERE ID = ?";
+                    sql = "SELECT * FROM missao WHERE ID_MISSAO = ?";
                     break;
                 default:
                     System.out.print("Opção Invalida");
@@ -58,7 +56,7 @@ public class Pesquisar_ID {
                 System.out.println("Nenhum resultado encontrado 😰");
             }
         }
-        catch(SQLException e){
+        catch(Exception e){
             e.printStackTrace();
         }
     }

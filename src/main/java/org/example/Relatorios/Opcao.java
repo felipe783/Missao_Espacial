@@ -15,8 +15,10 @@ public class Opcao {
 
         System.out.println("Escolha uma opção:");
         int resposta = input.nextInt();
-        input.nextLine();
-
+        if(resposta == 0){
+            System.out.print("Encerrando");
+            System.exit(0);
+        }
         return resposta;
     }
 }

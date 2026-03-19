@@ -1,5 +1,7 @@
 package org.example;
-import org.example.Objetos.Criacao;
+
+import org.example.Objetos.*;
+import org.example.Relatorios.*;
 
 import java.util.Scanner;
 
@@ -7,6 +9,23 @@ public class Main{
     public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args){
-        Criacao.Mostrar(); //Pra criar os satelites e Foguetes
+
+        //Criacao.Mostrar(); //Pra criar os satelites e Foguetes
+        System.out.println("=========================");
+        System.out.println("1-Mostrar Satelites/Foguete");
+        System.out.println("=========================");
+        System.out.println("O que deseja fazer?");
+        int resposta = input.nextInt();
+        switch(resposta){
+            case 1: //Mostrar os relatorios
+                resposta = Opcao.Mostrar_Opcao();
+                Relatorio.Relatorios_Mostrar(resposta);
+                Pesquisar_ID.Pesquisar(resposta);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
     }
 }

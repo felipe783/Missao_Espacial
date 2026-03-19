@@ -1,31 +1,36 @@
 package org.example.Relatorios;
 
 import org.example.Data.ConnectionData;
-import java.sql.SQLException;
+
 import java.sql.*;
 import java.sql.PreparedStatement;
 
-public class Relatorios {
-    public static int Relatorios_Mostrar(){
+public class Relatorio {
+    public static int Relatorios_Mostrar(int resposta){
         try{
             Connection conn = ConnectionData.getConnection();
-            int resposta = Opcao.Mostrar_Opcao(); // Mostra as opções
+            String colunaID=null;
             String sql = null;
             switch(resposta){ //Aqui ele vai trazer todos os Objetos da tabela com as variaveis ID, NOME
                 case 1: //Satelite
-                    sql = "SELECT ID, NOME FROM satelite";
+                    sql = "SELECT ID_SATELITE, NOME FROM satelite";
+                    colunaID= "ID_SATELITE";
                     break;
                 case 2: // Foguete
-                    sql = "SELECT ID, NOME FROM foguete";
+                    sql = "SELECT ID_FOGUETE, NOME FROM foguete";
+                    colunaID= "ID_FOGUETE";
                     break;
                 case 3: //Equipes
-                    sql = "SELECT ID, NOME FROM equipe";
+                    sql = "SELECT ID_EQUIPE, NOME FROM equipe";
+                    colunaID= "ID_EQUIPE";
                     break;
                 case 4: // Membros
                     sql = "SELECT ID, NOME FROM astronautas";
+                    colunaID= "ID";
                     break;
                 case 5: // Missao
-                    sql = "SELECT ID, NOME FROM missao";
+                    sql = "SELECT ID_MISSAO, NOME_MISSAO FROM missao";
+                    colunaID= "ID_MISSAO";
                     break;
                 default:
                     System.out.print("Opção Invalida");
@@ -34,14 +39,18 @@ public class Relatorios {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery(); //Executa a Query
 
-            while(rs.next()){ //Anda linha a linha da tabela
-                int id = rs.getInt("ID");
+            System.out.println("+----------------------+----------------------+");
+            System.out.printf("| %-20s | %-20s |%n", "ID", "NOME");
+            System.out.println("+----------------------+----------------------+");
+            while(rs.next()){
+                int id = rs.getInt(colunaID);
                 String nome = rs.getString("NOME");
-                System.out.println("ID:" + id + "\nNome:" + nome);
+                System.out.printf("| %-20d | %-20s |%n", id, nome);
             }
+            System.out.println("+----------------------+----------------------+");
             return resposta;
         }
-        catch(SQLException e){
+        catch(Exception e){
             e.printStackTrace();
             return -1;
         }
