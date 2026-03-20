@@ -57,17 +57,36 @@ public class Missao_Geral {
             Connection conn = ConnectionData.getConnection();
             System.out.println("Digite o ID do Foguete:");
             int ID_Fog = input.nextInt();
-
-            String sql = "SELECT * FROM foguete WHERE ID_FOGUETE = ?";
+            //--------Fog----------------
+            String sql = "UPDATE foguete SET STATUS = ? WHERE ID_FOGUETE = ?"; //Aqui pega o Foguete desejado mas so no banco
             PreparedStatement stmt_Fog = conn.prepareStatement(sql);
-            stmt_Fog.setInt(1,ID_Fog);
+            stmt_Fog.setString(1,"Em missão");
+            stmt_Fog.setInt(2,ID_Fog);
             ResultSet rs_Fog = stmt_Fog.executeQuery();
 
+            //--------Sat----------------
             System.out.println("Digite o ID do Foguete:");
             int ID_Sat = input.nextInt();
-            PreparedStatement stmt_Sat = conn.prepareStatement("SELECT * FROM satelite WHERE ID_SATELITE = ?");
-            stmt_Sat.setInt(1,ID_Sat);
-            ResultSet rs_Sat  = stmt_Sat.executeQuery();
+            PreparedStatement stmt_Sat = conn.prepareStatement("UPDATE  satelite SET STATUS= ? WHERE ID_SATELITE = ?");
+            stmt_Fog.setString(1,"Em missao");
+            stmt_Sat.setInt(2,ID_Sat);
+            ResultSet rs_Sat = stmt_Sat.executeQuery();
+
+            //Validar ce vai dar certo
+            if(rs_Fog.next()){ //Encontrou um resultado
+                double carga_util = rs_Fog.getFloat("CARGA_UTIL");
+                double peso = rs_Sat.getFloat("MASSA");
+
+                if(peso >= carga_util){
+                    System.out.printf("\nO satelite %d não suporta o peso do satelite %d",ID_Fog,ID_Sat);
+                }
+                else{
+                    System.out.print("Missão enviada");
+                    /*
+                    * Criar a missao na tabela da MISSAO mudar status Foguete e Sat para "em Missão" vincular astrounautas para a missão
+                    * */
+                }
+            }
         }
         catch(Exception e){
             System.out.println(e);
