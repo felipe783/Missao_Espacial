@@ -43,3 +43,7 @@ build/
 .env.*
 **/.env
 **/.env.*
+.sql
+.sql.*
+**/.sql
+**/.sql.*

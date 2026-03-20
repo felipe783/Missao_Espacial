@@ -54,8 +54,20 @@ public class Missao_Geral {
     }
     public static void Cadastrar_Missao(){
         try{
+            Connection conn = ConnectionData.getConnection();
             System.out.println("Digite o ID do Foguete:");
             int ID_Fog = input.nextInt();
+
+            String sql = "SELECT * FROM foguete WHERE ID_FOGUETE = ?";
+            PreparedStatement stmt_Fog = conn.prepareStatement(sql);
+            stmt_Fog.setInt(1,ID_Fog);
+            ResultSet rs_Fog = stmt_Fog.executeQuery();
+
+            System.out.println("Digite o ID do Foguete:");
+            int ID_Sat = input.nextInt();
+            PreparedStatement stmt_Sat = conn.prepareStatement("SELECT * FROM satelite WHERE ID_SATELITE = ?");
+            stmt_Sat.setInt(1,ID_Sat);
+            ResultSet rs_Sat  = stmt_Sat.executeQuery();
         }
         catch(Exception e){
             System.out.println(e);
