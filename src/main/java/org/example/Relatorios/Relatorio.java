@@ -1,6 +1,6 @@
 package org.example.Relatorios;
 
-import org.example.Data.ConnectionData;
+import org.example.Data.*;
 
 import java.sql.*;
 import java.sql.PreparedStatement;
@@ -48,6 +48,8 @@ public class Relatorio {
                 System.out.printf("| %-20d | %-20s |%n", id, nome);
             }
             System.out.println("+----------------------+----------------------+");
+
+            conn.close();
             return resposta;
         }
         catch(Exception e){

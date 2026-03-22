@@ -126,12 +126,11 @@ public class Missao_Geral {
                 else {
                     System.out.println("ID do foguete ou satélite não encontrado.");
                 }
-
                 conn.close();
             }
         }
         catch(Exception e){
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

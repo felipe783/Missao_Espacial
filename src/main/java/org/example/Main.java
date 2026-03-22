@@ -3,6 +3,7 @@ package org.example;
 import org.example.Objetos.*;
 import org.example.Relatorios.*;
 import org.example.Missao.*;
+import org.example.Objetos.*;
 
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class Main{
         System.out.println("1-Mostrar Satelites/Foguete");
         System.out.println("2-Iniciar Missão");
         System.out.println("3-Ver Missões");
+        System.out.println("4-Cadastrar Sat/Fog");
         System.out.println("=========================");
         System.out.println("O que deseja fazer?");
         int resposta = input.nextInt();
@@ -30,6 +32,10 @@ public class Main{
                 Missao_Geral.Cadastrar_Missao();
                 break;
             case 3:
+
+                break;
+            case 4:
+                Criacao.Mostrar();
                 break;
         }
     }

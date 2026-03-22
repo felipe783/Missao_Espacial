@@ -27,6 +27,8 @@ public class Criacao{
             stmt.setDouble(2,massa);
             stmt.setDouble(3,velo_orbital);
             stmt.executeUpdate();
+
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -60,6 +62,8 @@ public class Criacao{
             stmt.setDouble(3, carga);
             stmt.setDouble(4, combustivel);
             stmt.executeUpdate(); // Aqui ele lança pro Sql
+
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace(); //Ele imprime o ERRO todo e o caminho do codigo
