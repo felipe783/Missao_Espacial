@@ -13,11 +13,11 @@ public class Relatorio {
             String sql = null;
             switch(resposta){ //Aqui ele vai trazer todos os Objetos da tabela com as variaveis ID, NOME
                 case 1: //Satelite
-                    sql = "SELECT ID_SATELITE, NOME FROM satelite";
+                    sql = "SELECT ID_SATELITE, NOME, STATUS FROM satelite";
                     colunaID= "ID_SATELITE";
                     break;
                 case 2: // Foguete
-                    sql = "SELECT ID_FOGUETE, NOME FROM foguete";
+                    sql = "SELECT ID_FOGUETE, NOME, STATUS FROM foguete";
                     colunaID= "ID_FOGUETE";
                     break;
                 case 3: //Equipes

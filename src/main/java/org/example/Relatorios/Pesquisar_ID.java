@@ -25,7 +25,7 @@ public class Pesquisar_ID {
                     sql = "SELECT * FROM foguete WHERE ID_FOGUETE = ?";
                     break;
                 case 3: //Equipes
-                    sql = "SELECT * FROM equipe WHERE ID_EQUIPÉ = ?";
+                    sql = "SELECT * FROM equipe WHERE ID_EQUIPE = ?";
                     break;
                 case 4: // Membros
                     sql = "SELECT * FROM astronautas WHERE ID = ?";
@@ -37,6 +37,7 @@ public class Pesquisar_ID {
                     System.out.print("Opção Invalida");
                     return; //Vai evitar o sql null
             }
+
             //Executa a QUERY
             PreparedStatement stmt = conn.prepareStatement(sql); //Ta recebendo o comando
             stmt.setInt(1, ID);
@@ -55,6 +56,9 @@ public class Pesquisar_ID {
             } else {
                 System.out.println("Nenhum resultado encontrado 😰");
             }
+
+            conn.close();
+
         }
         catch(Exception e){
             e.printStackTrace();

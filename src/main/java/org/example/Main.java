@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.Objetos.*;
 import org.example.Relatorios.*;
+import org.example.Missao.*;
 
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class Main{
         System.out.println("=========================");
         System.out.println("1-Mostrar Satelites/Foguete");
         System.out.println("2-Iniciar Missão");
+        System.out.println("3-Ver Missões");
         System.out.println("=========================");
         System.out.println("O que deseja fazer?");
         int resposta = input.nextInt();
@@ -24,6 +26,8 @@ public class Main{
                 Pesquisar_ID.Pesquisar(resposta);
                 break;
             case 2:
+                Missao_Geral.Mostrar_SatFog();
+                Missao_Geral.Cadastrar_Missao();
                 break;
             case 3:
                 break;
