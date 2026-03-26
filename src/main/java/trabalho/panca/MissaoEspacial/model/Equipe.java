@@ -3,29 +3,32 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="equipe_tabela")
+@Table(name="EQUIPE_TABELA")
 public class Equipe {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "ID_EQUIPE")
+    private Long id_equipe;
+
+    @Column(name = "NOME_EQUIPE")
     private String nome_equipe;
+
+    @Column(name = "QNTD_MEMBROS")
     private int qntMembros;
 
-
-    public Equipe(int ID, String nome, int qntMembros) {
-        this.id = ID;
-        this.nome_equipe = nome;
+    public Equipe(Long id_equipe, String nome_equipe, int qntMembros) {
+        this.id_equipe = id_equipe;
+        this.nome_equipe = nome_equipe;
         this.qntMembros = qntMembros;
     }
 
-
-    public int getID() {
-        return id;
+    public Long getId_equipe() {
+        return id_equipe;
     }
 
-    public void setID(int id) {
-        this.id = id;
+    public void setId_equipe(Long id_equipe) {
+        this.id_equipe = id_equipe;
     }
 
     public int getQntMembros() {
@@ -36,12 +39,12 @@ public class Equipe {
         this.qntMembros = qntMembros;
     }
 
-    public String getNome() {
+    public String getNome_equipe() {
         return nome_equipe;
     }
 
-    public void setNome(String nome) {
-        this.nome_equipe = nome;
+    public void setNome_equipe(String nome_equipe) {
+        this.nome_equipe = nome_equipe;
     }
 }
 

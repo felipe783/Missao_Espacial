@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  server:
+    address: 0.0.0.0
+    port: 8080
+  jpa:
+    hibernate:
+      ddl-auto: none   # mantém como 'none' pra não criar/alterar tabelas
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Mantem o NOME IDENTICO ao oq eu coloquei nas Columns
+    show-sql: true
+  flyway:
+    enabled: true       # garante que o Flyway rode as migrations
+    baseline-on-migrate: true  # se o banco já tem dados

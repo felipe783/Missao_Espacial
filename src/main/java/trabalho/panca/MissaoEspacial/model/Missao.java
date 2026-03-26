@@ -5,65 +5,80 @@ import java.time.LocalDateTime;
 //É onde você cria todos os objetos, cria pro codigo o "satelite"
 
 @Entity //Toda a classe missão é uma entidade no banco de dados, vai ser persistida no Repository
-@Table(name = "missao_tabela") //A tabela do Banco
+@Table(name = "MISSAO_TABELA") //A tabela do Banco
 public class Missao {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id_missao;
-    private int id_satelite;
-    private int id_foguete;
-    private String nome_missao;
-    private LocalDateTime datalancamento;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_MISSAO")
+    private Long idMissao;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_SATELITE")
+    private Satelite satelite;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_FOGUETE")
+    private Foguete foguete;
+
+    @Column(name = "NOME_MISSAO")
+    private String nomeMissao;
+
+    @Column(name = "DATA_LANCAMENTO")
+    private LocalDateTime dataLancamento;
+
+    @Column(name = "STATUS")
     private String status;
 
-    public Missao(int id_missao, int id_satelite, String status, LocalDateTime datalancamento, String nome_missao, int id_foguete) { //Construtor da missão
-        this.id_missao = id_missao;
-        this.id_satelite = id_satelite;
+    public Missao() {}
+
+    public Long getIdMissao() {
+        return idMissao;
+    }
+
+    public Missao(Long idMissao, String status, LocalDateTime dataLancamento, String nomeMissao, Foguete foguete, Satelite satelite) {
+        this.idMissao = idMissao;
         this.status = status;
-        this.datalancamento = datalancamento;
-        this.nome_missao = nome_missao;
-        this.id_foguete = id_foguete;
+        this.dataLancamento = dataLancamento;
+        this.nomeMissao = nomeMissao;
+        this.foguete = foguete;
+        this.satelite = satelite;
     }
 
-    public int getId_foguete() {
-        return id_foguete;
+    public void setIdMissao(Long idMissao) {
+        this.idMissao = idMissao;
     }
 
-    public void setId_foguete(int id_foguete) {
-        this.id_foguete = id_foguete;
+    public Satelite getSatelite() {
+        return satelite;
     }
 
-    public int getId_missao() {
-        return id_missao;
+    public void setSatelite(Satelite satelite) {
+        this.satelite = satelite;
     }
 
-    public void setId_missao(int id_missao) {
-        this.id_missao = id_missao;
+    public Foguete getFoguete() {
+        return foguete;
     }
 
-    public int getId_satelite() {
-        return id_satelite;
+    public void setFoguete(Foguete foguete) {
+        this.foguete = foguete;
     }
 
-    public void setId_satelite(int id_satelite) {
-        this.id_satelite = id_satelite;
+    public String getNomeMissao() {
+        return nomeMissao;
     }
 
-    public String getNome_missao() {
-        return nome_missao;
+    public void setNomeMissao(String nomeMissao) {
+        this.nomeMissao = nomeMissao;
     }
 
-    public void setNome_missao(String nome_missao) {
-        this.nome_missao = nome_missao;
+    public LocalDateTime getDataLancamento() {
+        return dataLancamento;
     }
 
-    public LocalDateTime getDatalancamento() {
-        return datalancamento;
-    }
-
-    public void setDatalancamento(LocalDateTime datalancamento) {
-        this.datalancamento = datalancamento;
+    public void setDataLancamento(LocalDateTime dataLancamento) {
+        this.dataLancamento = dataLancamento;
     }
 
     public String getStatus() {

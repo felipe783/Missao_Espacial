@@ -5,21 +5,36 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tabela_foguete")
+@Table(name = "FOGUETE_TABELA")
 public class Foguete {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_foguete;
+    @Column(name = "ID_FOGUETE")
+    private Long id_foguete;
+
+    @Column(name = "NOME_FOGUETE")
     private String nome_foguete;
+
+    @Column(name = "STATUS_FOGUETE")
     private String status_foguete;
+
+    @Column(name = "COMBUSTIVEL_FOGUETE")
     private double combustivel;
+
+    @Column(name = "MASSA_TOTAL")
     private double massa_total;
+
+    @Column(name = "CARGA_UTIL")
     private double carga_util;
-    private LocalDate datalancamento; //So date
+
+    @Column(name = "DATA_LANCAMENTO")
+    private LocalDate datalancamento;//So date
+
+    @Column(name = "FOGUETE_CRIADOEM")
     private LocalDateTime criadoem;
 
-    public Foguete(String nome_foguete, String status_foguete, int id_foguete, double combustivel, double massa_total, double carga_util, LocalDate datalancamento, LocalDateTime criadoem) {
+    public Foguete(String nome_foguete, String status_foguete, Long id_foguete, double combustivel, double massa_total, double carga_util, LocalDate datalancamento, LocalDateTime criadoem) {
         this.nome_foguete = nome_foguete;
         this.status_foguete = status_foguete;
         this.id_foguete = id_foguete;
@@ -78,11 +93,11 @@ public class Foguete {
         this.combustivel = combustivel;
     }
 
-    public int getId_foguete() {
+    public Long getId_foguete() {
         return id_foguete;
     }
 
-    public void setId_foguete(int id_foguete) {
+    public void setId_foguete(Long id_foguete) {
         this.id_foguete = id_foguete;
     }
 
