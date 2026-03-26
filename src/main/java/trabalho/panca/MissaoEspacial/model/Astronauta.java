@@ -20,12 +20,13 @@ public class Astronauta {
     @Column(name = "STATUS_ASTRONAUTA")
     private String status_astronauta;
 
-    @Column( name = "ID_EQUIPE_ASTRONAUTA")
-    private int id_equipe_astronauta;
+    @ManyToOne
+    @JoinColumn( name = "ID_EQUIPE_ASTRONAUTA", referencedColumnName = "ID_EQUIPE" )
+    private Equipe equipe;
 
-    public Astronauta(Long id_astronauta, int id_equipe_astronauta, String status_astronauta, double peso_astronauta, String nome_astronauta) {
+    public Astronauta(Long id_astronauta, Equipe equipe, String status_astronauta, double peso_astronauta, String nome_astronauta) {
         this.id_astronauta = id_astronauta;
-        this.id_equipe_astronauta = id_equipe_astronauta;
+        this.equipe = equipe;
         this.status_astronauta = status_astronauta;
         this.peso_astronauta = peso_astronauta;
         this.nome_astronauta = nome_astronauta;
@@ -39,20 +40,12 @@ public class Astronauta {
         this.id_astronauta = id_astronauta;
     }
 
-    public String getNome_astronauta() {
-        return nome_astronauta;
+    public Equipe getEquipe() {
+        return equipe;
     }
 
-    public void setNome_astronauta(String nome_astronauta) {
-        this.nome_astronauta = nome_astronauta;
-    }
-
-    public double getPeso_astronauta() {
-        return peso_astronauta;
-    }
-
-    public void setPeso_astronauta(double peso_astronauta) {
-        this.peso_astronauta = peso_astronauta;
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 
     public String getStatus_astronauta() {
@@ -63,11 +56,19 @@ public class Astronauta {
         this.status_astronauta = status_astronauta;
     }
 
-    public int getId_equipe_astronauta() {
-        return id_equipe_astronauta;
+    public double getPeso_astronauta() {
+        return peso_astronauta;
     }
 
-    public void setId_equipe_astronauta(int id_equipe_astronauta) {
-        this.id_equipe_astronauta = id_equipe_astronauta;
+    public void setPeso_astronauta(double peso_astronauta) {
+        this.peso_astronauta = peso_astronauta;
+    }
+
+    public String getNome_astronauta() {
+        return nome_astronauta;
+    }
+
+    public void setNome_astronauta(String nome_astronauta) {
+        this.nome_astronauta = nome_astronauta;
     }
 }
