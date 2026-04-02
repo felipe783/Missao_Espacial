@@ -19,7 +19,7 @@ public class MissaoService {
     public List<Missao> getAll(){return missaoRepository.findAll(); }
 
     //CRIAR
-    //public Missao save(Missao missao){return missaoRepository.save(missao); } //Save precisa de uma Entity pra salvar
+    public Missao save(Missao missao){return missaoRepository.save(missao); } //Save precisa de uma Entity pra salvar
 
     //DELETAR
     //public void delete(Long id){missaoRepository.deleteById(id); }

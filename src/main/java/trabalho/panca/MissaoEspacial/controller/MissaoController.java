@@ -23,6 +23,6 @@ public class MissaoController {
     @GetMapping //Ta listando todas as missao
     public List<Missao> getAll() {return missaoService.getAll(); }
 
-    //@PostMapping //Mandando pro server
-    //public Missao create(@RequestBody Missao missao) {return missaoService.save(missao) ;}
+    @PostMapping //Mandando pro server
+    public Missao criarMissao(@RequestBody Missao missao) {return missaoService.save(missao) ;}
 }
