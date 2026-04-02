@@ -1,4 +1,5 @@
 package trabalho.panca.MissaoEspacial.controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trabalho.panca.MissaoEspacial.service.MissaoService;
 import trabalho.panca.MissaoEspacial.model.Missao;
@@ -9,7 +10,7 @@ import java.util.List;
 //É o porteiro da as rotas
 
 @RestController //Sabe que toda a classe é um controler
-@RequestMapping("/missões")
+@RequestMapping("/missoes")
 public class MissaoController {
 
     //Injeção de independencia
@@ -24,4 +25,11 @@ public class MissaoController {
 
     @PostMapping //Mandando pro server
     public Missao Create(@RequestBody Missao missao) {return missaoService.save(missao) ;}
+
+    @DeleteMapping("/{id}") //Define uma rota HTTP pra ser deletado o ID.
+    public ResponseEntity<Void> delete(@PathVariable Long id){ //Pega o valor do ID
+        missaoService.delete(id); //Chama o Service e deleta o ID
+        return ResponseEntity.noContent().build(); //Retorna status 204, onde significa que a opereação deu certo
+    } //ResponseEntity<Void> permite controlar a resposta HTTP, "Void" não ira retornar nenhum Body
+
 }

@@ -22,5 +22,5 @@ public class MissaoService {
     public Missao save(Missao missao){return missaoRepository.save(missao); } //Save precisa de uma Entity pra salvar
 
     //DELETAR
-    //public void delete(Long id){missaoRepository.deleteById(id); }
+    public void delete(Long id){missaoRepository.deleteById(id); }
 }

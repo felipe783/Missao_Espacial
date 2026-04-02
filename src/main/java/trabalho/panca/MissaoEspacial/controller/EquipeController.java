@@ -1,4 +1,5 @@
 package trabalho.panca.MissaoEspacial.controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import trabalho.panca.MissaoEspacial.service.EquipeService;
 import trabalho.panca.MissaoEspacial.model.Equipe;
@@ -13,11 +14,17 @@ public class EquipeController {
         this.equipeService = equipeservice;
     }
 
-
     @GetMapping
-    public List<Equipe> getAll(){return equipeService.getAll_Equipe();}
+    public List<Equipe> getAll(){return equipeService.findAll();}
 
 
     @PostMapping
-    public Equipe create(@RequestBody Equipe equipe){return equipeService.saveEquipe(equipe);}
+    public Equipe create(@RequestBody Equipe equipe){return equipeService.save(equipe);}
+    //Aqui estamos lindando com HTTP então o create "cria" a requisição por isso create
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        equipeService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
