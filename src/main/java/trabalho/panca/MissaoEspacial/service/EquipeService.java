@@ -24,7 +24,7 @@ public class EquipeService {
     public void delete(Long id){equipeRepository.deleteById(id); }
 
     //ADD Membros
-    public void addmember(Long id, Astronauta astronauta){
+    public void addMember(Long id, Astronauta astronauta){
         Equipe equipe = equipeRepository.findById(id).orElseThrow(()-> new RuntimeException("Equipe não encontrada")); //Busca no banco se não existis lança o "Equipe não encontrada"
 
         //Pegar o Limite

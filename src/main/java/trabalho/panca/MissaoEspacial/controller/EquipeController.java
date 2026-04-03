@@ -32,7 +32,7 @@ public class EquipeController {
     @PostMapping("/{id}/astronautas")
     public ResponseEntity<Void> addMember(@PathVariable Long id, @RequestBody Astronauta astronauta){
         //@RequestBody Pega o JSON dos astronautas e converte pra o objeto astronauta
-        equipeService.addmember(id, astronauta); //Vai pra função no service
+        equipeService.addMember(id, astronauta); //Vai pra função no service
         return ResponseEntity.status(201).build(); //Retornar sem nenhum Body e com o status de CREATED(201)
     }
 
