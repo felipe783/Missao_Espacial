@@ -17,11 +17,11 @@ public class Missao {
     @JoinColumn(name = "ID_SATELITE")
     private Satelite satelite;
 
-    @ManyToOne
+    @OneToOne //So pode ter uma Equipe Vinculada
     @JoinColumn(name = "ID_EQUIPE")
     private Equipe equipe;
 
-    @ManyToOne
+    @ManyToOne //Mas pode
     @JoinColumn(name = "ID_FOGUETE")
     private Foguete foguete;
 

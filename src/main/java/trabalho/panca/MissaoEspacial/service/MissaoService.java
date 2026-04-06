@@ -20,20 +20,21 @@ public class MissaoService {
 
     //CRIAR
     public Missao save(Missao missao){
-        validarMissao(missao); //Vai lançar uma exception então não retorna "true or false" apenas interrompe toda a execução
+        validarMissao(missao, missao.getIdMissao()); //Vai lançar uma exception então não retorna "true or false" apenas interrompe toda a execução
         return missaoRepository.save(missao);
     }
 
     //Validar Missão
-    public void validarMissao(Missao missao){ //O objeto missão ja contem satelite e foguete
+    public void validarMissao(Missao missao,Long id){ //O objeto missão ja contem satelite e foguete
 
             if(missao.getSatelite() == null || missao.getFoguete() == null || missao.getNomeMissao() == null){
                 throw new RuntimeException("Dados incomplestos");
             }
             double carga_util = missao.getFoguete().getCarga_util();
             double peso_Sat = missao.getSatelite().getMassa_satelite();
+            double Peso_Equipe = missaoRepository.SomaPesoAstronautas(id);
 
-            if(peso_Sat>= carga_util){
+            if(peso_Sat + Peso_Equipe >= carga_util){
                 throw new RuntimeException("Peso do satelite maior do que a carga util do Foguete");
             }
 
@@ -54,7 +55,7 @@ public class MissaoService {
     public Missao iniciarMissao(Long id){
         Missao missao = missaoRepository.findById(id).orElseThrow(() -> new RuntimeException("Missão não encontrada"));
 
-        return missaoRepository.save(missao);
+        return missaoRepository.save(missao); //Ele valida na função "save"
     }
 
     //DELETAR

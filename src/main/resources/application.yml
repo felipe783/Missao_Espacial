@@ -5,7 +5,7 @@ spring:
     password: ${DB_PASS}
   jpa:
     hibernate:
-      ddl-auto: none   # mantém como 'none' pra não criar/alterar tabelas
+      ddl-auto: validate   # mantém como 'validate' ele so vai validar a tabela, Se tiver uma coluna faltando vai dar Erro mas não vai consertar
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl # Mantem o NOME IDENTICO ao oq eu coloquei nas Columns
     show-sql: true
