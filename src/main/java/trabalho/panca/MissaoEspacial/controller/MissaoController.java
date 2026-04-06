@@ -20,21 +20,25 @@ public class MissaoController {
         this.missaoService = missaoService;
     }
 
+    //LISTAR missão
     @GetMapping //Ta listando todas as missao
     public List<Missao> ListarMissao(){return missaoService.findAll(); }
 
+    //ADD Missão
     @PostMapping //Criando a missão no Sql
     public ResponseEntity<Missao> Create(@RequestBody Missao missao) {
         Missao nova = missaoService.save(missao);
         return ResponseEntity.status(201).body(nova); //
     }
 
+    //INICIAR missão
     @PutMapping("/{id}/iniciar") //Iniciando a missão
     public ResponseEntity<Missao> Start(@PathVariable Long id){
         Missao missao = missaoService.iniciarMissao(id);
         return ResponseEntity.ok(missao);
     }
 
+    //DELETAR Missão por ID
     @DeleteMapping("/{id}") //Define uma rota HTTP pra ser deletado o ID.
     public ResponseEntity<Void> delete(@PathVariable Long id){ //Pega o valor do ID
         missaoService.delete(id); //Chama o Service e deleta o ID

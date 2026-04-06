@@ -15,20 +15,23 @@ public class EquipeController {
         this.equipeService = equipeservice;
     }
 
+    //Lista EQUIPE
     @GetMapping
     public List<Equipe> getAll(){return equipeService.findAll();}
 
-
+    //CRIAR uma Equipe
     @PostMapping
     public Equipe create(@RequestBody Equipe equipe){return equipeService.save(equipe);}
     //Aqui estamos lindando com HTTP então o create "cria" a requisição por isso create
 
+    //DELETAR equipe
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         equipeService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
+    //ADD membro
     @PostMapping("/{id}/astronautas")
     public ResponseEntity<Void> addMember(@PathVariable Long id, @RequestBody Astronauta astronauta){
         //@RequestBody Pega o JSON dos astronautas e converte pra o objeto astronauta
