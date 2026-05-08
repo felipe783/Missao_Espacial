@@ -1,0 +1,42 @@
+.container-options{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 1px;
+}
+
+.container-options h1{
+    font-size: 20px;
+}
+
+.main-title {
+    
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+
+    font-family: Impact, sans-serif;
+    font-size: 200px;
+    font-weight: bold;
+
+    line-height: 0.9;
+
+    color: black;
+
+    text-transform: uppercase;
+   
+}
+
+#title-special,
+#title-mission {
+    letter-spacing: -4px;
+}
+
+#title-mission{
+    position: relative;
+    left: 80px;
+}
+#title-special{
+    position: relative;
+    left: 160px;
+}
