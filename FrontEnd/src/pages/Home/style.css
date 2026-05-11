@@ -1,16 +1,15 @@
-.container-options{
+.container-options {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
     padding: 1px;
 }
 
-.container-options h1{
+.container-options h1 {
     font-size: 20px;
 }
 
 .main-title {
-    
     display: flex;
     flex-direction: column;
     margin-top: 80px;
@@ -24,19 +23,30 @@
     color: black;
 
     text-transform: uppercase;
-   
 }
 
 #title-special,
 #title-mission {
+    color: #aa3bff;;
     letter-spacing: -4px;
 }
 
-#title-mission{
+#title-mission {
     position: relative;
     left: 80px;
 }
-#title-special{
+
+#title-special {
     position: relative;
     left: 160px;
+    min-height: 200px;
+}
+
+#title-special .cursor {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
